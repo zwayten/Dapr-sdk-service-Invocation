@@ -1,0 +1,25 @@
+  version: 1
+  common: 
+    env:  
+      DEBUG: true
+  apps:
+    - appID: app_one
+      appDirPath: ./app_one
+      appProtocol: http
+      appPort: 3000
+      daprHTTPPort: 3501
+      command: ["node", "app.js"]
+
+    - appID: app_two
+      appDirPath: ./app_two
+      appProtocol: http
+      appPort: 3001
+      daprHTTPPort: 3502
+      command: ["node", "app.js"]
+
+  components:
+    observability:
+      # type: "dapr.io/opencensus"
+      type: "dapr.io/prometheus"
+      # type: "dapr.io/prometheus"
+      prometheusAddress: http://localhost:9090
